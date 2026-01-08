@@ -4,9 +4,21 @@ import { Flight } from "./Flight.js"
 export class Passenger{
     #money
     constructor(name, idNumber, money){
-        this.name = name
-        this.IdNumber = idNumber
-        this.#money = money
+        if (typeof name === "string") {
+            this.name = name
+        } else {
+            throw new Error("invalid name");
+        }
+        if (typeof idNumber === "number") {
+            this.idNumber = idNumber
+        } else {
+            throw new Error("invalid idNumber");
+        }
+        if (typeof money === "number") {
+            this.#money = money
+        } else {
+            throw new Error("invalid money");
+        }
     }
 
     isEnoughMoney(price){
